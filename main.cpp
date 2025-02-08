@@ -1,28 +1,39 @@
 #include <iostream>
+using namespace std;
 
-// TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-int main() {
-    // TIP Press <shortcut actionId="RenameElement"/> when your caret is at the
-    // <b>lang</b> variable name to see how CLion can help you rename it.
-    auto lang = "C++";
-    std::cout << "Hello and welcome to " << lang << "!\n";
+class Car {
+public:
+    double speed;
+    double distance;
+    string color;
+public:
 
-    for (int i = 1; i <= 5; i++) {
-        // TIP Press <shortcut actionId="Debug"/> to start debugging your code.
-        // We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/>
-        // breakpoint for you, but you can always add more by pressing
-        // <shortcut actionId="ToggleLineBreakpoint"/>.
-        std::cout << "i = " << i << std::endl;
-
-
-        do
+    Car() {
+        cout << "Пустой конструктор Car()" << endl;
     }
+
+    Car(double speed, double distance, string color) {
+        this->speed = speed;
+        this->distance = distance;
+        this->color = color;
+        cout << "Конструктор Car(double speed, double distance, string color) создали Car со скоростью " << speed <<
+        " с пробегом " <<  distance << " со цветом "<< color<<endl;
+    }
+
+    Car(const Car& car) {
+        this->speed = car.speed;
+        this->distance = car.distance;
+        this->color = car.color;
+        cout << "Конструктор копирования Car(const Car& car) создали Car со скоростью " << car.speed <<
+        " с пробегом " <<  car.distance << " со цветом "<< car.color<<endl;
+    }
+};
+
+int main() {
+
+    Car *car;
+    car = new Car(3.4,10.4,"Белый");
+    Car *car2 = new Car(*car);
 
     return 0;
 }
-
-// TIP See CLion help at <a
-// href="https://www.jetbrains.com/help/clion/">jetbrains.com/help/clion/</a>.
-//  Also, you can try interactive lessons for CLion by selecting
-//  'Help | Learn IDE Features' from the main menu.
